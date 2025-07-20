@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 
 <head>
     <meta charset="UTF-8">
@@ -26,9 +26,10 @@
     {{ $slot }}
     <!-- Footer -->
     <x-footer />
-
-    @fluxScripts
+    
     @stack('js')
+    @fluxScripts
+    
 </body>
 
 </html>

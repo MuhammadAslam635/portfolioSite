@@ -10,7 +10,7 @@
 
     <x-team />
 
-   <x-blog />
+   <x-blog :blogs="$blogs" />
 
     <!-- Blog Modal -->
     <div id="blogModal" class="modal">

@@ -62,8 +62,6 @@ class AppAnimations {
     this.initFloatingElements()
     this.initSectionAnimations()
     this.initThemeManager()
-    this.initBlogModal()
-    this.initBlogCard()
     this.initResizeHandler()
     this.isInitialized = true
   }
@@ -381,27 +379,7 @@ class AppAnimations {
       })
     })
   }
-  initBlogCard(){
-    gsap.utils.toArray('.blog-card').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            gsap.to(card, {
-                y: -10,
-                scale: 1.02,
-                duration: 0.4,
-                ease: "power2.out"
-            });
-        });
-        
-        card.addEventListener('mouseleave', () => {
-            gsap.to(card, {
-                y: 0,
-                scale: 1,
-                duration: 0.4,
-                ease: "power2.out"
-            });
-        });
-    });
-  }
+  
   initResizeHandler() {
     let resizeTimeout
     window.addEventListener("resize", () => {
@@ -416,15 +394,13 @@ class AppAnimations {
     this.themeManager = new ThemeManager()
   }
 
-  initBlogModal() {
-    this.blogModal = new BlogModal()
-  }
+  
 }
 
 // Theme Management Class
 class ThemeManager {
   constructor() {
-    this.currentTheme = localStorage.getItem("theme") || "dark"
+    this.currentTheme = localStorage.getItem("theme") || "light"
     this.init()
   }
 
@@ -600,56 +576,13 @@ class BlogModal {
     })
   }
 
-  openBlogModal(blogId) {
-    const modal = document.getElementById("blogModal")
-    const content = document.getElementById("blogContent")
-    const blog = this.blogData[blogId]
+  
 
-    if (!modal || !content || !blog) return
-
-    content.innerHTML = blog.content
-    modal.style.display = "block"
-
-    // Animate modal
-    gsap.set(modal, { opacity: 0 })
-    gsap.set(".modal-content", { scale: 0.7, y: -50 })
-
-    gsap.to(modal, { opacity: 1, duration: 0.3 })
-    gsap.to(".modal-content", {
-      scale: 1,
-      y: 0,
-      duration: 0.4,
-      ease: "back.out(1.7)",
-    })
-  }
-
-  closeBlogModal() {
-    const modal = document.getElementById("blogModal")
-    if (!modal) return
-
-    gsap.to(".modal-content", {
-      scale: 0.7,
-      y: -50,
-      duration: 0.3,
-      ease: "power2.in",
-    })
-
-    gsap.to(modal, {
-      opacity: 0,
-      duration: 0.3,
-      onComplete: () => {
-        modal.style.display = "none"
-      },
-    })
-  }
+ 
 }
 
 // Initialize the application
 const app = new AppAnimations()
 
-// Make functions globally available for inline event handlers
-window.openBlogModal = (blogId) => app.blogModal.openBlogModal(blogId)
-window.closeBlogModal = () => app.blogModal.closeBlogModal()
 
-// Export for potential use in other modules
-export { AppAnimations, ThemeManager, BlogModal }
+export { AppAnimations, ThemeManager}

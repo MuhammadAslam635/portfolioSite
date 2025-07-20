@@ -9,13 +9,14 @@ use App\Livewire\Web\Blogs\BlogDetailComponent;
 use App\Livewire\Web\Projects\ProjectComponent;
 
 Route::get('/', function () {
-    // dd(\App\Models\ContactUs::all());
-    return view('welcome');
+    // dd(\App\Models\Blog::all());
+    $blogs = \App\Models\Blog::latest()->take(6)->get();
+    return view('welcome', compact('blogs'));
 })->name('home');
 Route::get('/about',AboutComponent::class)->name('about');
 Route::get('/team',TeamComponent::class)->name('team');
 Route::get('/blogs',BlogComponent::class)->name('blogs');
-Route::get('/blog-detail',BlogDetailComponent::class)->name('blogDetail');
+Route::get('/blog-detail/{slug}',BlogDetailComponent::class)->name('blogDetail');
 Route::get('/projects',ProjectComponent::class)->name('projects');
 
 Route::view('dashboard', 'dashboard')
