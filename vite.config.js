@@ -12,6 +12,19 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    optimizeDeps: {
+        include: ["gsap", "gsap/ScrollTrigger", "gsap/TextPlugin", "gsap/ScrollToPlugin", "sweetalert2", "aos"],
+      },
+      build: {
+        rollupOptions: {
+          output: {
+            manualChunks: {
+              gsap: ["gsap", "gsap/ScrollTrigger", "gsap/TextPlugin", "gsap/ScrollToPlugin"],
+              vendor: ["sweetalert2", "aos"],
+            },
+          },
+        },
+      },
     server: {
         cors: true,
     },

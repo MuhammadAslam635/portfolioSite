@@ -2,11 +2,21 @@
 
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
+use App\Livewire\Web\AboutComponent;
+use App\Livewire\Web\TeamComponent;
+use App\Livewire\Web\Blogs\BlogComponent;
+use App\Livewire\Web\Blogs\BlogDetailComponent;
+use App\Livewire\Web\Projects\ProjectComponent;
 
 Route::get('/', function () {
     // dd(\App\Models\ContactUs::all());
     return view('welcome');
 })->name('home');
+Route::get('/about',AboutComponent::class)->name('about');
+Route::get('/team',TeamComponent::class)->name('team');
+Route::get('/blogs',BlogComponent::class)->name('blogs');
+Route::get('/blog-detail',BlogDetailComponent::class)->name('blogDetail');
+Route::get('/projects',ProjectComponent::class)->name('projects');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
