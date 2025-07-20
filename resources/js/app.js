@@ -400,7 +400,7 @@ class AppAnimations {
 // Theme Management Class
 class ThemeManager {
   constructor() {
-    this.currentTheme = localStorage.getItem("theme") || "light"
+    this.currentTheme = localStorage.getItem("theme") || "dark"
     this.init()
   }
 
@@ -488,98 +488,7 @@ class ThemeManager {
   }
 }
 
-// Blog Modal Class
-class BlogModal {
-  constructor() {
-    this.blogData = {
-      blog1: {
-        title: "Building Scalable APIs with NestJS",
-        date: "December 15, 2024",
-        readTime: "5 min read",
-        content: `
-                <h1 class="text-3xl font-bold mb-6 gradient-text-animated">Building Scalable APIs with NestJS</h1>
-                <div class="flex items-center mb-8 text-gray-400">
-                    <span>December 15, 2024</span>
-                    <span class="mx-2">•</span>
-                    <span>5 min read</span>
-                </div>
-                
-                <div class="prose prose-invert max-w-none">
-                    <p class="text-lg mb-6">NestJS has revolutionized the way we build Node.js applications by bringing the power of TypeScript and decorators to server-side development. In this comprehensive guide, we'll explore how to architect robust and scalable APIs using NestJS framework.</p>
-                    
-                    <h2 class="text-2xl font-bold mb-4 text-neon-green">Why Choose NestJS?</h2>
-                    <p class="mb-6">NestJS combines the best of both worlds - the flexibility of Node.js and the structure of enterprise-grade frameworks. It provides:</p>
-                    <ul class="list-disc list-inside mb-6 space-y-2">
-                        <li>Built-in TypeScript support</li>
-                        <li>Dependency injection system</li>
-                        <li>Modular architecture</li>
-                        <li>Extensive ecosystem of plugins</li>
-                        <li>Built-in testing utilities</li>
-                    </ul>
-                    
-                    <h2 class="text-2xl font-bold mb-4 text-neon-green">Core Architecture Principles</h2>
-                    <p class="mb-6">When building scalable APIs with NestJS, follow these key principles:</p>
-                    
-                    <div class="code-block p-4 rounded-lg mb-6 font-mono text-sm">
-                        <span class="text-blue-400">@Controller</span>(<span class="text-yellow-400">'users'</span>)<br>
-                        <span class="text-blue-400">export class</span> <span class="text-white">UserController</span> {<br>
-                        &nbsp;&nbsp;<span class="text-blue-400">constructor</span>(<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">private readonly</span> <span class="text-white">userService</span>: <span class="text-neon-green">UserService</span><br>
-                        &nbsp;&nbsp;) {}<br><br>
-                        &nbsp;&nbsp;<span class="text-blue-400">@Get</span>()<br>
-                        &nbsp;&nbsp;<span class="text-blue-400">async</span> <span class="text-white">findAll</span>() {<br>
-                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-blue-400">return</span> <span class="text-blue-400">await</span> <span class="text-blue-400">this</span>.<span class="text-white">userService</span>.<span class="text-white">findAll</span>();<br>
-                        &nbsp;&nbsp;}<br>
-                        }
-                    </div>
-                    
-                    <h2 class="text-2xl font-bold mb-4 text-neon-green">Best Practices</h2>
-                    <p class="mb-6">Here are some essential best practices for building production-ready NestJS applications:</p>
-                    <ol class="list-decimal list-inside mb-6 space-y-2">
-                        <li>Use DTOs for request/response validation</li>
-                        <li>Implement proper error handling with filters</li>
-                        <li>Use guards for authentication and authorization</li>
-                        <li>Leverage interceptors for cross-cutting concerns</li>
-                        <li>Write comprehensive unit and integration tests</li>
-                    </ol>
-                    
-                    <p class="mb-6">By following these principles and best practices, you'll be able to build APIs that can handle millions of requests while maintaining clean, maintainable code.</p>
-                </div>
-            `,
-      },
-      // Add other blog entries here...
-    }
 
-    this.setupEventListeners()
-  }
-
-  setupEventListeners() {
-    // Close modal when clicking outside
-    const modal = document.getElementById("blogModal")
-    if (modal) {
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) {
-          this.closeBlogModal()
-        }
-      })
-    }
-
-    // Close modal with Escape key
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        this.closeBlogModal()
-        const mobileMenu = document.getElementById("mobile-menu")
-        if (mobileMenu) {
-          mobileMenu.classList.add("hidden")
-        }
-      }
-    })
-  }
-
-  
-
- 
-}
 
 // Initialize the application
 const app = new AppAnimations()
