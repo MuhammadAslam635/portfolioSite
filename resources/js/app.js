@@ -129,9 +129,9 @@ class AppAnimations {
 
     gsap.to(typewriterText, {
       duration: 2,
-      text: "Backend Developer",
+      text: "Web & App Developmen",
       ease: "none",
-      repeat: -1,
+      repeat: -18,
       yoyo: true,
       repeatDelay: 2,
     })
