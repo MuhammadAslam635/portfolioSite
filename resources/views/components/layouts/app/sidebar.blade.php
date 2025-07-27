@@ -15,6 +15,15 @@
                 <flux:navlist.group :heading="__('Platform')" class="grid">
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
                 </flux:navlist.group>
+                <flux:navlist.group :heading="__('Categories')" class="grid">
+                    <flux:navlist.item icon="list-todo" :href="route('categories')" :current="request()->routeIs('categories')" wire:navigate>{{ __('Categories') }}</flux:navlist.item>
+                </flux:navlist.group>
+                <flux:navlist.group :heading="__('Tags')" class="grid">
+                    <flux:navlist.item icon="tag" :href="route('tags')" :current="request()->routeIs('tags')" wire:navigate>{{ __('Tags') }}</flux:navlist.item>
+                </flux:navlist.group>
+                <flux:navlist.group :heading="__('Blogs')" class="grid">
+                    <flux:navlist.item icon="rss" :href="route('blogs')" :current="request()->routeIs('blogs')" wire:navigate>{{ __('Blogs') }}</flux:navlist.item>
+                </flux:navlist.group>
             </flux:navlist>
 
             <flux:spacer />
@@ -125,7 +134,9 @@
             </flux:dropdown>
         </flux:header>
 
-        {{ $slot }}
+        <flux:main>
+            {{ $slot }}
+        </flux:main>
 
         @fluxScripts
     </body>

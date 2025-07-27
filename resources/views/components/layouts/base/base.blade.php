@@ -8,7 +8,7 @@
     <link rel="icon" href="{{ asset('assets/icon.png') }}" sizes="any">
     <link rel="icon" href="{{ asset('assets/icon.png') }}" type="image/svg+xml">
     <link rel="apple-touch-icon" href="{{ asset('assets/icon.png') }}">
-    @vite(["resources/css/app.css","resources/js/app.js"])
+    @vite(["resources/css/base.css","resources/js/app.js"])
     @fluxAppearance
 </head>
 
