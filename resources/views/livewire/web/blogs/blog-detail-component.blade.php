@@ -57,7 +57,7 @@
                         <div
                             class="h-64 bg-gradient-to-br from-neon-green to-dark-green opacity-80 rounded-xl mb-12 flex items-center justify-center">
 
-                            <img src="{{ asset('assets/' . $blog->image) }}" alt="{{ $blog->image }}"
+                            <img src="{{ asset('assets/' . $gallery->image) }}" alt="{{ $blog->image }}"
                                 class="w-full h-full object-cover rounded-xl ">
                         </div>
                         {!! $gallery->rendered_content !!}
@@ -108,78 +108,10 @@
                 Comments & Discussion
             </h2>
 
-            <div class="glass-effect p-8 rounded-xl mb-8" data-aos="fade-up">
-                <form class="space-y-6">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-sm font-medium text-neon-green mb-2">Name</label>
-                            <input type="text"
-                                class="w-full px-4 py-3 bg-charcoal border border-gray-600 rounded-lg focus:border-neon-green focus:outline-none text-white placeholder-gray-400 transition-all duration-300"
-                                placeholder="Your name">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-neon-green mb-2">Email</label>
-                            <input type="email"
-                                class="w-full px-4 py-3 bg-charcoal border border-gray-600 rounded-lg focus:border-neon-green focus:outline-none text-white placeholder-gray-400 transition-all duration-300"
-                                placeholder="your@email.com">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-neon-green mb-2">Comment</label>
-                        <textarea rows="4"
-                            class="w-full px-4 py-3 bg-charcoal border border-gray-600 rounded-lg focus:border-neon-green focus:outline-none text-white placeholder-gray-400 resize-vertical transition-all duration-300"
-                            placeholder="Share your thoughts..."></textarea>
-                    </div>
-                    <button type="submit"
-                        class="magnetic-button bg-neon-green text-black px-8 py-3 rounded-lg font-semibold hover:bg-dark-green transition-all duration-300 justify-center w-full">
-                        Post Comment
-                    </button>
-                </form>
-            </div>
+            <x-blog-comment-form />
 
             <!-- Sample Comments -->
-            <div class="space-y-6">
-                <div class="glass-effect p-6 rounded-xl" data-aos="fade-up" data-aos-delay="100">
-                    <div class="flex items-start space-x-4">
-                        <div
-                            class="w-12 h-12 bg-gradient-to-br from-neon-green to-dark-green rounded-full flex items-center justify-center text-neon-green font-bold">
-                            JS
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-center space-x-2 mb-2">
-                                <h4 class="font-semibold text-white">John Smith</h4>
-                                <span class="text-gray-400 text-sm">2 days ago</span>
-                            </div>
-                            <p class="text-gray-300">
-                                Great article! I've been using NestJS for a few months now and this guide really helped
-                                me understand
-                                some of the more advanced concepts. The dependency injection examples are particularly
-                                useful.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="glass-effect p-6 rounded-xl" data-aos="fade-up" data-aos-delay="200">
-                    <div class="flex items-start space-x-4">
-                        <div
-                            class="w-12 h-12 bg-gradient-to-br from-dark-green to-matrix-green rounded-full flex items-center justify-center text-neon-green font-bold">
-                            SK
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-center space-x-2 mb-2">
-                                <h4 class="font-semibold text-white">Sarah Kim</h4>
-                                <span class="text-gray-400 text-sm">1 day ago</span>
-                            </div>
-                            <p class="text-gray-300">
-                                Thanks for sharing this comprehensive guide! Could you write a follow-up article about
-                                testing strategies
-                                for NestJS applications? That would be incredibly helpful.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <x-blog-comments :comments="$blog->blogComments" />
         </div>
     </section>
 </div>

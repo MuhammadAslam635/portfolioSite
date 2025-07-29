@@ -20,15 +20,15 @@
                     class="nav-link hover:text-neon-green transition-all duration-300 relative">Contact</a>
 
                 <!-- Theme Toggle -->
-                <div class="theme-toggle" id="themeToggle" title="Toggle theme">
+                {{-- <div class="theme-toggle" id="themeToggle" title="Toggle theme">
                     <span class="theme-icon">🌙</span>
                     <div class="theme-toggle-slider">
                         <span id="sliderIcon">🌙</span>
                     </div>
                     <span class="theme-icon">☀️</span>
-                </div>
+                </div> --}}
             </div>
-            <div class="md:hidden flex items-center space-x-4">
+            {{-- <div class="md:hidden flex items-center space-x-4">
                 <!-- Mobile Theme Toggle -->
                 <div class="theme-toggle scale-75" id="mobileThemeToggle" title="Toggle theme">
                     <span class="theme-icon">🌙</span>
@@ -42,7 +42,7 @@
                     <flux:radio value="dark">Dark</flux:radio>
                     <flux:radio value="system">System</flux:radio>
                 </flux:radio.group>
-            </div>
+            </div> --}}
         </div>
     </div>
 </nav>

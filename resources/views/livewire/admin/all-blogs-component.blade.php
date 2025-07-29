@@ -129,7 +129,7 @@
                                     class="backdrop-blur-sm cursor-pointer" :href="route('blogs.edit',['slug'=>$blog->slug])" wire:navigate>
                                     Edit
                                 </flux:button>
-                                <flux:button variant="primary" color="fuchsia" size="sm" icon="eye"
+                                <flux:button :href="route('blogs.detail',['slug'=>$blog->slug])" variant="primary" color="fuchsia" size="sm" icon="eye"
                                     class="backdrop-blur-sm cursor-pointer">
                                     Detail
                                 </flux:button>

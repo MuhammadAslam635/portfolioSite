@@ -10,6 +10,8 @@ use App\Livewire\Web\Projects\ProjectComponent;
 use App\Livewire\Admin\AdminCreateBlogComponent;
 use App\Livewire\Admin\AdmineditBlogComponent;
 use App\Livewire\Admin\AllBlogsComponent;
+use App\Livewire\Admin\AdminViewBlogDetailComponent;
+use App\Livewire\Admin\AdminEditBlogGalleryComponent;
 use App\Livewire\Admin\AllCategoriesComponent;
 use App\Livewire\Admin\AdminCreateCategoryComponent;
 use App\Livewire\Admin\AdminEditCategoryComponent;
@@ -38,6 +40,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/create', AdminCreateBlogComponent::class)->name('blogs.create');
         Route::get('/edit/{slug}', AdmineditBlogComponent::class)->name('blogs.edit');
         Route::get('/all', AllBlogsComponent::class)->name('blogs');
+        Route::get('/detail/{slug}', AdminViewBlogDetailComponent::class)->name('blogs.detail');
+        Route::get('/edit/{id}/gallery', AdminEditBlogGalleryComponent::class)->name('blogs.gallery.edit');
     });
     Route::prefix('categories')->group(function () {
         Route::get('/all',AllCategoriesComponent::class)->name('categories');

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Aslam - Backend Developer</title>
-    <link rel="icon" href="{{ asset('assets/icon.png') }}" sizes="any">
-    <link rel="icon" href="{{ asset('assets/icon.png') }}" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="{{ asset('assets/icon.png') }}">
+    <title>{{ config('app.name') ?? 'Muhammad Aslam - Backend Developer' }}</title>
+    <link rel="icon" href="{{ asset('assets/logo.png') }}" sizes="any">
+    <link rel="icon" href="{{ asset('assets/logo.png') }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ asset('assets/logo.png') }}">
     @vite(["resources/css/base.css","resources/js/app.js"])
     @fluxAppearance
 </head>
@@ -26,10 +26,10 @@
     {{ $slot }}
     <!-- Footer -->
     <x-footer />
-    
+
     @stack('js')
     @fluxScripts
-    
+
 </body>
 
 </html>

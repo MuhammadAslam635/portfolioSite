@@ -68,6 +68,13 @@ class AllBlogsComponent extends Component
                 $this->errorToast("Blog not found.");
                 return;
             }
+            if($this->Blogimage) {
+                $image = Carbon::now()->timestamp . '.' . $this->Blogimage->extension();
+                $this->Blogimage->storeAs('assets/blogs/gallery', $image);
+                $imagePath = 'assets/blogs/gallery/' . $image;
+                $this->Blogimage = $imagePath;
+            }
+            
             BlogGallery::create([
                 'blog_id'     => $blog->id,
                 'image'       => $this->Blogimage,
