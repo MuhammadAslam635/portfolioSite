@@ -8,7 +8,8 @@ import { TextPlugin } from "gsap/TextPlugin"
 import { ScrollToPlugin } from "gsap/ScrollToPlugin"
 import AOS from "aos"
 import "aos/dist/aos.css"
-
+import "trix";
+import "trix/dist/trix.css";
 // Make Swal globally available
 window.Swal = Swal
 
@@ -129,9 +130,9 @@ class AppAnimations {
 
     gsap.to(typewriterText, {
       duration: 2,
-      text: "Backend Developer",
+      text: "Web & App Developmen",
       ease: "none",
-      repeat: -1,
+      repeat: -18,
       yoyo: true,
       repeatDelay: 2,
     })
@@ -379,7 +380,7 @@ class AppAnimations {
       })
     })
   }
-  
+
   initResizeHandler() {
     let resizeTimeout
     window.addEventListener("resize", () => {
@@ -394,7 +395,7 @@ class AppAnimations {
     this.themeManager = new ThemeManager()
   }
 
-  
+
 }
 
 // Theme Management Class

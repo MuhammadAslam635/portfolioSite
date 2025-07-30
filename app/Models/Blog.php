@@ -169,4 +169,8 @@ class Blog extends Model
     public function blogGalleries(){
         return $this->hasMany(BlogGallery::class);
     }
+    public function blogComments()
+    {
+        return $this->hasMany(BlogComment::class);
+    }
 }

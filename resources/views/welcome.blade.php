@@ -33,7 +33,7 @@
                 Ready to bring your ideas to life? Let's discuss your next project.
             </p>
 
-            
+
             @livewire('contact-message-component')
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
                 <div class="glass-effect p-6 bg-black rounded-xl text-center" data-aos="fade-up" data-aos-delay="100">
@@ -54,5 +54,6 @@
             </div>
         </div>
     </section>
+    <x-footer />
 
 </x-layouts.base.base>

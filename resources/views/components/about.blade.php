@@ -3,14 +3,14 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div data-aos="fade-right" data-aos-duration="1000">
-                <h2 class="text-4xl md:text-5xl font-bold mb-8 gradient-text-animated font-mono">About Me</h2>
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 gradient-text-animated font-mono">About Code High</h2>
                 <p class="text-lg mb-6 leading-relaxed stagger-animation">
-                    I'm a passionate backend developer with 5+ years of experience building
-                    scalable APIs and robust server-side applications. I specialize in creating
-                    high-performance systems using NestJS, Golang, FastAPI, and Laravel.
+                    Code High is a passionate software house team with 5+ years of experience building
+                    scalable APIs, Web & mobile and robust server-side applications. We specialize in creating
+                    high-performance systems using NestJS, Golang, FastAPI, Laravel, React and Flutter.
                 </p>
                 <p class="text-lg mb-8 leading-relaxed stagger-animation">
-                    When I'm not architecting backend solutions, you'll find me exploring new
+                    When we're not architecting backend solutions, you'll find us exploring new
                     database optimization techniques, contributing to open source projects,
                     or mentoring junior developers in the art of clean code.
                 </p>
