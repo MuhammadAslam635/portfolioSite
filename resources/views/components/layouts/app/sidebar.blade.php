@@ -24,6 +24,10 @@
                 <flux:navlist.group :heading="__('Blogs')" class="grid">
                     <flux:navlist.item icon="rss" :href="route('blogs')" :current="request()->routeIs('blogs')" wire:navigate>{{ __('Blogs') }}</flux:navlist.item>
                 </flux:navlist.group>
+
+                    <flux:navlist.group :heading="__('Team')" class="grid">
+                    <flux:navlist.item icon="users" :href="route('team.index')" :current="request()->routeIs('team.index')" wire:navigate>{{ __('Team') }}</flux:navlist.item>
+                </flux:navlist.group>
             </flux:navlist>
 
             <flux:spacer />

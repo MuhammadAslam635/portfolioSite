@@ -17,19 +17,21 @@ use App\Livewire\Admin\AdminCreateCategoryComponent;
 use App\Livewire\Admin\AdminEditCategoryComponent;
 use App\Livewire\Admin\AllTagComponent;
 use App\Livewire\Admin\AdminCreateTagComponent;
+use App\Livewire\Admin\AdminCreateTeamComponent;
 use App\Livewire\Admin\AdminEditTagComponent;
-
+use App\Livewire\Admin\AdminEditTeamComponent;
+use App\Livewire\Admin\AllTeamsComponent;
 
 Route::get('/', function () {
     // dd(\App\Models\Blog::all());
     $blogs = \App\Models\Blog::latest()->take(6)->get();
     return view('welcome', compact('blogs'));
 })->name('home');
-Route::get('/about',AboutComponent::class)->name('about');
-Route::get('/team',TeamComponent::class)->name('team');
-Route::get('/blogs',BlogComponent::class)->name('blogs');
-Route::get('/blog-detail/{slug}',BlogDetailComponent::class)->name('blogDetail');
-Route::get('/projects',ProjectComponent::class)->name('projects');
+Route::get('/about', AboutComponent::class)->name('about');
+Route::get('/team', TeamComponent::class)->name('team');
+Route::get('/blogs', BlogComponent::class)->name('blogs');
+Route::get('/blog-detail/{slug}', BlogDetailComponent::class)->name('blogDetail');
+Route::get('/projects', ProjectComponent::class)->name('projects');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -44,19 +46,26 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/edit/{id}/gallery', AdminEditBlogGalleryComponent::class)->name('blogs.gallery.edit');
     });
     Route::prefix('categories')->group(function () {
-        Route::get('/all',AllCategoriesComponent::class)->name('categories');
-        Route::get('/create',AdminCreateCategoryComponent::class)->name('categories.create');
-        Route::get('/edit/{slug}',AdminEditCategoryComponent::class)->name('categories.edit');
+        Route::get('/all', AllCategoriesComponent::class)->name('categories');
+        Route::get('/create', AdminCreateCategoryComponent::class)->name('categories.create');
+        Route::get('/edit/{slug}', AdminEditCategoryComponent::class)->name('categories.edit');
     });
     Route::prefix('tags')->group(function () {
-        Route::get('/all',AllTagComponent::class)->name('tags');
-        Route::get('/create',AdminCreateTagComponent::class)->name('tags.create');
-        Route::get('/edit/{slug}',AdminEditTagComponent::class)->name('tags.edit');
+        Route::get('/all', AllTagComponent::class)->name('tags');
+        Route::get('/create', AdminCreateTagComponent::class)->name('tags.create');
+        Route::get('/edit/{slug}', AdminEditTagComponent::class)->name('tags.edit');
     });
     Route::redirect('settings', 'settings/profile');
     Volt::route('settings/profile', 'settings.profile')->name('settings.profile');
     Volt::route('settings/password', 'settings.password')->name('settings.password');
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
+
+    Route::prefix('team')->group(function () {
+        Route::get('/', AllTeamsComponent::class)->name('team.index');
+        Route::get('/create', AdminCreateTeamComponent::class)->name('team.create');
+        Route::get('/edit/{slug}', AdminEditTeamComponent::class)->name('team.edit');
+    });
 });
 
-require __DIR__.'/auth.php';
+
+require __DIR__ . '/auth.php';
