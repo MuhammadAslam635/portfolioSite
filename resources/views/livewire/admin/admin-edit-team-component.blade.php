@@ -1,7 +1,7 @@
 <div class="min-h-screen p-4">
     <div class="max-w-7xl mx-auto">
         <!-- Team Header Section -->
-        <div class="bg-green-100/70 dark:bg-gray-800/70 rounded-3xl p-8 mb-8 hover-lift animate-fade-in">
+        <div class="bg-green-50 dark:bg-black rounded-3xl p-8 mb-8 hover-lift animate-fade-in">
             <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                 <div class="flex-1">
                     <div class="flex items-center gap-4 mb-4">
@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div class="bg-green-100/70 dark:bg-gray-800/70 rounded-3xl p-8 mb-8 hover-lift animate-fade-in">
+        <div class="rounded-3xl p-8 mb-8 hover-lift animate-fade-in">
             <form wire:submit.prevent="updateTeam" class="space-y-6">
                 <!-- Basic Information -->
                 <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-2">

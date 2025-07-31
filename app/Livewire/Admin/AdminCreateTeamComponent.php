@@ -4,12 +4,13 @@ namespace App\Livewire\Admin;
 
 use Livewire\Component;
 use Livewire\Attributes\Layout;
+use Livewire\WithFileUploads;
+use App\Traits\ToastTrait;
 
 class AdminCreateTeamComponent extends Component
 {
-    use \App\Traits\ToastTrait;
-    use \Livewire\WithFileUploads;
-    #[Layout('components.layouts.app')]
+    use ToastTrait;
+    use WithFileUploads;
 
     #[\Livewire\Attributes\Validate('required')]
     public string $name = "Test Team Member";

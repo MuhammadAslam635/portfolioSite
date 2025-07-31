@@ -1,6 +1,6 @@
 <div class="min-h-screen p-4">
     <div class="max-w-7xl mx-auto">
-        <div class="bg-green-50 dark:glass-effect rounded-2xl p-6 mb-6">
+        <div class="bg-green-50 dark:bg-black rounded-2xl p-6 mb-6">
             <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                 <div>
                     <h1 class="text-3xl font-bold gradient-text-animated mb-2">Create New Team Member</h1>
@@ -9,7 +9,7 @@
             </div>
         </div>
         
-        <div class="grid grid-cols-1 gap-6 mb-8 bg-green-50 dark:bg-accent-500 rounded-lg p-4">
+        <div class="grid grid-cols-1 gap-6 mb-8 rounded-lg p-4">
             <form wire:submit.prevent="createTeam" enctype="multipart/form-data">
                 <!-- Basic Information -->
                 <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-2">
@@ -79,12 +79,13 @@
                     @if ($image)
                         <div class="flex gap-1 justify-end rounded-lg border-green-400">
                             <img src="{{ $image->temporaryUrl() }}"
-                                class="object-cover w-[50%] h-[50%] border-green-500 rounded-lg" />
+                                 class="w-full h-64 object-cover rounded-lg shadow-md" />
                         </div>
                     @else
                         <div class="flex gap-1 justify-end rounded-lg border-green-400">
-                            <img src="{{ asset('assets/teams/default.jpg') }}"
-                                class="object-cover w-[50%] h-[50%] border-green-500 rounded-lg" />
+                          
+                            <img src="{{ asset('assets/blogs/ai-chatbots.avif') }}"
+                                 class="w-full h-64 object-cover rounded-lg shadow-md" />
                         </div>
                     @endif
                 </div>
