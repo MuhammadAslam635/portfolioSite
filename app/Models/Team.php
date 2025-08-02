@@ -137,4 +137,19 @@ class Team extends Model
                      ->orderBy('projects.name', $direction)
                      ->select('teams.*');
     }
+    /**
+     * Scope a query to order teams by project role.
+     */
+    public function scopeOrderByProjectRole($query, $direction = 'asc')
+    {
+        return $query->join('project_teams', 'teams.id', '=', 'project_teams.team_id')
+                     ->orderBy('project_teams.role', $direction)
+                     ->select('teams.*');
+    }
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class, 'team_skills')
+            ->withPivot('level', 'is_active', 'score')
+            ->withTimestamps();
+    }
 }

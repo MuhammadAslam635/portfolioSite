@@ -6,10 +6,10 @@
                 <div class="flex-1">
                     <div class="flex items-center gap-4 mb-4">
                         <div class="w-16 h-16 rounded-2xl bg-gradient-to-r from-blue-500 to-green-500 flex items-center justify-center text-white font-bold text-xl">
-                            {{ strtoupper(substr($team->name, 0, 1)) }}
+                            {{ substr($name, 0, 1) }}
                         </div>
                         <div>
-                            <h1 class="text-4xl font-bold gradient-text-animated mb-2">{{ $team->name }}</h1>
+                            <h1 class="text-4xl font-bold gradient-text-animated mb-2">{{ $name }}</h1>
                             <p class="text-gray-600 dark:text-gray-300">Edit team member information and details</p>
                         </div>
                     </div>
@@ -24,7 +24,7 @@
                     <flux:input type="text" label="Full Name*" wire:model.live="name" wire:keydown="genSlug" />
                     <flux:input type="text" label="Slug (Auto)*" wire:model="slug" />
                 </div>
-                
+
                 <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-2">
                     <flux:input type="text" label="Designation*" wire:model="designation" placeholder="e.g., Senior Developer, Project Manager" />
                     <flux:select wire:model="is_active" label="Status*" placeholder="Choose Status...">
@@ -69,7 +69,7 @@
                         <input id="content" type="hidden" wire:model.live="content">
                         <trix-editor input="content"
                             class="w-full trix-content min-h-[16rem] border rounded shadow-sm"
-                            placeholder="Enter team member bio and description here..." 
+                            placeholder="Enter team member bio and description here..."
                             x-data="{ content: @entangle('content').live }"
                             x-init="$el.addEventListener('trix-change', function(e) {
                                 content = e.target.value;

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('image')->default('default.jpg');
             $table->enum('is_active', [0, 1])->default(1);
+            $table->enum('dType', [0, 1,2])->default(1);
             $table->string('designation')->nullable();
             $table->text('content')->nullable();
             $table->string('facebook')->nullable();
@@ -28,6 +29,7 @@ return new class extends Migration
             $table->string('github')->nullable();
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
+            $table->text('bio')->nullable();
             $table->timestamps();
         });
     }

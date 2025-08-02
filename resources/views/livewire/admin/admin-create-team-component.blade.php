@@ -8,7 +8,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="grid grid-cols-1 gap-6 mb-8 rounded-lg p-4">
             <form wire:submit.prevent="createTeam" enctype="multipart/form-data">
                 <!-- Basic Information -->
@@ -16,12 +16,17 @@
                     <flux:input type="text" label="Full Name*" wire:model.live="name" wire:keydown="genSlug" />
                     <flux:input type="text" label="Slug (Auto)*" wire:model="slug" />
                 </div>
-                
-                <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-2">
+
+                <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-2">
                     <flux:input type="text" label="Designation*" wire:model="designation" placeholder="e.g., Senior Developer, Project Manager" />
                     <flux:select wire:model="is_active" label="Status*" placeholder="Choose Status...">
                         <flux:select.option value="1">Active</flux:select.option>
                         <flux:select.option value="0">Inactive</flux:select.option>
+                    </flux:select>
+                    <flux:select wire:model="dType" label="Type*" placeholder="Choose Stack...">
+                        <flux:select.option value="0">Frontend</flux:select.option>
+                        <flux:select.option value="1">Backend</flux:select.option>
+                        <flux:select.option value="2">Full Stack</flux:select.option>
                     </flux:select>
                 </div>
 
@@ -62,7 +67,7 @@
                             <input id="content" type="hidden" wire:model.live="content">
                             <trix-editor input="content"
                                 class="w-full trix-content min-h-[16rem] border rounded shadow-sm"
-                                placeholder="Enter team member bio and description here..." 
+                                placeholder="Enter team member bio and description here..."
                                 x-data="{ content: @entangle('content').live }"
                                 x-init="$el.addEventListener('trix-change', function(e) {
                                     content = e.target.value;
@@ -83,7 +88,7 @@
                         </div>
                     @else
                         <div class="flex gap-1 justify-end rounded-lg border-green-400">
-                          
+
                             <img src="{{ asset('assets/blogs/ai-chatbots.avif') }}"
                                  class="w-full h-64 object-cover rounded-lg shadow-md" />
                         </div>

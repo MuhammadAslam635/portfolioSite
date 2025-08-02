@@ -3,24 +3,16 @@
 
     <x-about />
 
-    <x-skills />
+    <x-skills :backends="$backends" :frontends="$frontends" :databases="$databases" :ais="$ais" />
 
     <!-- Projects Section -->
     <x-feature-projects />
 
-    <x-team />
+    <x-team :teams="$teams" />
 
    <x-blog :blogs="$blogs" />
 
-    <!-- Blog Modal -->
-    <div id="blogModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeBlogModal()">&times;</span>
-            <div id="blogContent">
-                <!-- Blog content will be loaded here -->
-            </div>
-        </div>
-    </div>
+    <!-- Testimonials Section -->
 
     <x-testimonial />
 

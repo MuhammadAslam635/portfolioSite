@@ -35,6 +35,8 @@ class AdminCreateTeamComponent extends Component
     public $github = "";
     public $phone = "";
     public $email = "";
+    public $dType = 0;
+    public $bio = "";
 
     public function genSlug()
     {
@@ -43,9 +45,10 @@ class AdminCreateTeamComponent extends Component
 
     public function createTeam()
     {
+        $this->validate();
         try {
-            $this->validate();
-            
+
+
             if ($this->image) {
                 $teamImage = \Carbon\Carbon::now()->timestamp . '.' . $this->image->extension();
                 $this->image->storeAs('assets/teams', $teamImage);
@@ -59,6 +62,7 @@ class AdminCreateTeamComponent extends Component
                 'designation' => $this->designation,
                 'content' => $this->content,
                 'is_active' => $this->is_active,
+                'dType' => $this->dType,
                 'facebook' => $this->facebook,
                 'twitter' => $this->twitter,
                 'linkedin' => $this->linkedin,
@@ -68,14 +72,15 @@ class AdminCreateTeamComponent extends Component
                 'github' => $this->github,
                 'phone' => $this->phone,
                 'email' => $this->email,
+                'bio' => $this->bio,
             ]);
 
             $this->successToast("Team Member Created Successfully.");
-            
+
             // Reset form
-            $this->reset(['name', 'slug', 'image', 'designation', 'content', 'facebook', 'twitter', 'linkedin', 'instagram', 'youtube', 'whatsapp', 'github', 'phone', 'email']);
+            $this->reset();
             $this->is_active = 1;
-            
+
         } catch (\Exception $e) {
             $this->errorToast($e->getMessage());
         }

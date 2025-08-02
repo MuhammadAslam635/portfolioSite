@@ -6,10 +6,10 @@
             <h1 class="text-6xl md:text-8xl font-bold mb-6 font-mono">
                 <span class="gradient-text-animated">ABOUT</span>
                 <br>
-                <span class="text-white">ME</span>
+                <span class="text-white">Code-High</span>
             </h1>
             <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-                Passionate backend developer crafting scalable solutions with modern technologies
+                Passionate crafting scalable solutions with modern technologies
             </p>
         </div>
     </div>
@@ -23,17 +23,17 @@
                 <h2 class="text-4xl md:text-5xl font-bold mb-8 gradient-text-animated font-mono">My Journey</h2>
                 <div class="space-y-6 text-lg leading-relaxed">
                     <p class="stagger-animation">
-                        My journey into software development began 5 years ago when I discovered the power of 
-                        creating digital solutions that solve real-world problems. What started as curiosity 
+                        Our journey into software development began 1 years ago when I discovered the power of
+                        creating digital solutions that solve real-world problems. What started as curiosity
                         about how applications work evolved into a passion for building robust, scalable systems.
                     </p>
                     <p class="stagger-animation">
-                        I specialize in backend development, with expertise in NestJS, Golang, FastAPI, and Laravel. 
-                        My approach combines clean architecture principles with modern development practices to 
+                        I specialize in backend development, with expertise in NestJS, Golang, FastAPI, and Laravel.
+                        My approach combines clean architecture principles with modern development practices to
                         deliver high-performance applications that can scale with business needs.
                     </p>
                     <p class="stagger-animation">
-                        Beyond coding, I'm passionate about mentoring junior developers, contributing to open-source 
+                        Beyond coding, I'm passionate about mentoring junior developers, contributing to open-source
                         projects, and staying at the forefront of emerging technologies like AI and cloud computing.
                     </p>
                 </div>
@@ -59,7 +59,7 @@
                         </div>
                     </div>
                     <div class="text-center">
-                        <div class="w-32 h-32 bg-gradient-to-br from-neon-green to-dark-green rounded-full mx-auto mb-4 flex items-center justify-center text-neon-green font-bold text-4xl animate-glow">
+                        <div class="w-32 h-32 bg-gradient-to-br from-neon-green to-dark-green rounded-full mx-auto mb-4 flex items-center justify-center text-black font-bold text-4xl animate-glow">
                             MA
                         </div>
                         <h3 class="text-xl font-bold text-white mb-2">Muhammad Aslam</h3>
@@ -77,7 +77,7 @@
         <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text-animated font-mono" data-aos="fade-up">
             Skills & Expertise
         </h2>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Backend Development -->
             <div class="glass-effect p-8 rounded-xl hover:border-neon-green transition-all duration-300" data-aos="fade-up" data-aos-delay="100">
@@ -160,11 +160,11 @@
         <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text-animated font-mono" data-aos="fade-up">
             Experience Timeline
         </h2>
-        
+
         <div class="relative">
             <!-- Timeline Line -->
             <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-neon-green to-dark-green"></div>
-            
+
             <!-- Timeline Items -->
             <div class="space-y-12">
                 <!-- Experience 1 -->
@@ -174,7 +174,7 @@
                             <h3 class="text-xl font-bold text-neon-green mb-2">Senior Backend Developer</h3>
                             <p class="text-gray-400 mb-2">TechCorp Solutions • 2022 - Present</p>
                             <p class="text-gray-300">
-                                Leading backend development for enterprise applications, managing a team of 5 developers, 
+                                Leading backend development for enterprise applications, managing a team of 5 developers,
                                 and architecting scalable microservices handling 10M+ requests daily.
                             </p>
                         </div>
@@ -192,7 +192,7 @@
                             <h3 class="text-xl font-bold text-neon-green mb-2">Full Stack Developer</h3>
                             <p class="text-gray-400 mb-2">StartupHub • 2020 - 2022</p>
                             <p class="text-gray-300">
-                                Developed and maintained multiple web applications using NestJS, React, and PostgreSQL. 
+                                Developed and maintained multiple web applications using NestJS, React, and PostgreSQL.
                                 Implemented CI/CD pipelines and reduced deployment time by 70%.
                             </p>
                         </div>
@@ -206,7 +206,7 @@
                             <h3 class="text-xl font-bold text-neon-green mb-2">Junior Developer</h3>
                             <p class="text-gray-400 mb-2">CodeCraft Agency • 2019 - 2020</p>
                             <p class="text-gray-300">
-                                Started my professional journey building web applications with Laravel and MySQL. 
+                                Started my professional journey building web applications with Laravel and MySQL.
                                 Gained experience in agile development and client communication.
                             </p>
                         </div>
@@ -225,7 +225,7 @@
         <h2 class="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text-animated font-mono" data-aos="fade-up">
             Philosophy & Values
         </h2>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <!-- Value 1 -->
             <div class="text-center" data-aos="fade-up" data-aos-delay="100">

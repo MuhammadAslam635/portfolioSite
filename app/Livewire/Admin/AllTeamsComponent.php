@@ -4,6 +4,7 @@ namespace App\Livewire\Admin;
 
 use App\Models\Team;
 use App\Models\Project;
+use App\Models\Skill;
 use App\Traits\ToastTrait;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
@@ -27,7 +28,9 @@ class AllTeamsComponent extends Component
     public $latest = 'latest';
     public $selectedTeamId;
     public $selectedTeam;
-    
+    public $teamSkill;
+    public $teamSkillScore =60;
+
     // Project assignment properties
     public $projectId;
     public $role;
@@ -39,20 +42,21 @@ class AllTeamsComponent extends Component
         $this->inactiveTeams = Team::where('is_active', 0)->count();
     }
 
-    public function assignProject($id)
+    public function openModal($id)
     {
         $this->selectedTeamId = $id;
         $this->selectedTeam = Team::find($id);
-        
+
         if (!$this->selectedTeam) {
             $this->errorToast("Team member not found.");
             return;
         }
-        
+
         $this->showConfirmModal = true;
     }
 
-    public function assignTeamToProject()
+
+    public function addProject()
     {
         try {
             $this->validate([
@@ -63,7 +67,7 @@ class AllTeamsComponent extends Component
 
             $team = Team::find($this->selectedTeamId);
             $project = Project::find($this->projectId);
-            
+
             if (!$team || !$project) {
                 $this->errorToast("Team member or project not found.");
                 return;
@@ -84,7 +88,44 @@ class AllTeamsComponent extends Component
             $this->successToast("Team member assigned to project successfully.");
             $this->showConfirmModal = false;
             $this->reset(['selectedTeamId', 'projectId', 'role']);
-            
+
+        } catch (\Exception $e) {
+            $this->errorToast($e->getMessage());
+        }
+    }
+    public function addSkill()
+    {
+        try {
+            $this->validate([
+                'selectedTeamId' => 'required|exists:teams,id',
+                'teamSkill' => 'required|exists:skills,id',
+                'teamSkillScore' => 'required|numeric:min:40|max:100',
+            ]);
+
+            $team = Team::find($this->selectedTeamId);
+            $project = Skill::find($this->teamSkill);
+
+            if (!$team || !$project) {
+                $this->errorToast("Team member or skill not found.");
+                return;
+            }
+
+            // Check if already assigned
+            if ($team->skills()->where('skill_id', $this->teamSkill)->exists()) {
+                $this->warningToast("Team member is already assigned to this skill.");
+                return;
+            }
+
+            $team->skills()->attach($this->teamSkill, [
+                'score' => $this->teamSkillScore,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+
+            $this->successToast("Team member assigned to skill successfully.");
+            $this->showConfirmModal = false;
+            $this->reset(['selectedTeamId', 'projectId', 'teamSkillScore', 'teamSkill']);
+
         } catch (\Exception $e) {
             $this->errorToast($e->getMessage());
         }
@@ -98,7 +139,7 @@ class AllTeamsComponent extends Component
                 $team->update(['is_active' => !$team->is_active]);
                 $status = $team->is_active ? 'activated' : 'deactivated';
                 $this->successToast("Team member {$status} successfully.");
-                
+
                 // Update counts
                 $this->activeTeams = Team::where('is_active', 1)->count();
                 $this->inactiveTeams = Team::where('is_active', 0)->count();
@@ -131,6 +172,7 @@ class AllTeamsComponent extends Component
         }
 
         $teams = $query->paginate(12);
+        $skills = Skill::get();
         $projects = Project::where('is_active', 1)->get();
         $designations = Team::select('designation')
                            ->distinct()

@@ -33,12 +33,13 @@ class AdminEditTeamComponent extends Component
     public $image;
     public $newImage;
     public $teamSlug;
+    public $sType;
 
     public function mount($slug)
     {
         $this->teamSlug = $slug;
         $this->team = Team::where('slug', $this->teamSlug)->first();
-        
+
         if ($this->team) {
             $this->name = $this->team->name;
             $this->slug = $this->team->slug;
@@ -55,6 +56,7 @@ class AdminEditTeamComponent extends Component
             $this->phone = $this->team->phone;
             $this->email = $this->team->email;
             $this->image = $this->team->image;
+            $this->sType = $this->team->sType;
         }
     }
 
@@ -102,7 +104,7 @@ class AdminEditTeamComponent extends Component
             ]);
 
             $this->successToast("Team Member Updated Successfully.");
-            
+
         } catch (\Exception $e) {
             $this->errorToast($e->getMessage());
         }

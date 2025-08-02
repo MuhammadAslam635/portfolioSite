@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 use App\Livewire\Web\AboutComponent;
 use App\Livewire\Web\TeamComponent;
+use App\Livewire\Web\TeamDetailComponent;
+use App\Livewire\Web\TeamProjectsComponent;
 use App\Livewire\Web\Blogs\BlogComponent;
 use App\Livewire\Web\Blogs\BlogDetailComponent;
 use App\Livewire\Web\Projects\ProjectComponent;
@@ -21,14 +23,28 @@ use App\Livewire\Admin\AdminCreateTeamComponent;
 use App\Livewire\Admin\AdminEditTagComponent;
 use App\Livewire\Admin\AdminEditTeamComponent;
 use App\Livewire\Admin\AllTeamsComponent;
+use App\Livewire\Admin\AdminEditSkillComponent;
+use App\Livewire\Admin\AdminCreateSkillComponent;
+use App\Livewire\Admin\AllSkillsComponent;
+use App\Livewire\Admin\AdminEditProjectComponent;
+use App\Livewire\Admin\AdminCreateProjectComponent;
+use App\Livewire\Admin\AllProjectsComponent;
 
 Route::get('/', function () {
     // dd(\App\Models\Blog::all());
     $blogs = \App\Models\Blog::latest()->take(6)->get();
-    return view('welcome', compact('blogs'));
+    $backends = \App\Models\Skill::where('sType', 1)->get();
+    $frontends = \App\Models\Skill::where('sType', 0)->get();
+    $databases = \App\Models\Skill::where('sType', 2)->get();
+    $ais = \App\Models\Skill::where('sType', 3)->get();
+    $teams = \App\Models\Team::all();
+
+    return view('welcome', compact('blogs', 'backends', 'frontends', 'databases', 'ais', 'teams'));
 })->name('home');
 Route::get('/about', AboutComponent::class)->name('about');
 Route::get('/team', TeamComponent::class)->name('team');
+Route::get('/team/{slug}', TeamDetailComponent::class)->name('team.detail');
+Route::get('/team/projects/{slug}', TeamProjectsComponent::class)->name('team.projects');
 Route::get('/blogs', BlogComponent::class)->name('blogs');
 Route::get('/blog-detail/{slug}', BlogDetailComponent::class)->name('blogDetail');
 Route::get('/projects', ProjectComponent::class)->name('projects');
@@ -60,10 +76,20 @@ Route::middleware(['auth'])->group(function () {
     Volt::route('settings/password', 'settings.password')->name('settings.password');
     Volt::route('settings/appearance', 'settings.appearance')->name('settings.appearance');
 
-    Route::prefix('team')->group(function () {
+    Route::prefix('teams')->group(function () {
         Route::get('/', AllTeamsComponent::class)->name('team.index');
         Route::get('/create', AdminCreateTeamComponent::class)->name('team.create');
         Route::get('/edit/{slug}', AdminEditTeamComponent::class)->name('team.edit');
+    });
+    Route::prefix('skills')->group(function () {
+        Route::get('/', AllSkillsComponent::class)->name('skills.index');
+        Route::get('/create', AdminCreateSkillComponent::class)->name('skills.create');
+        Route::get('/edit/{slug}', AdminEditSkillComponent::class)->name('skills.edit');
+    });
+    Route::prefix('projects')->group(function () {
+        Route::get('/', AllProjectsComponent::class)->name('projects.index');
+        Route::get('/create', AdminCreateProjectComponent::class)->name('projects.create');
+        Route::get('/edit/{slug}', AdminEditProjectComponent::class)->name('projects.edit');
     });
 });
 
