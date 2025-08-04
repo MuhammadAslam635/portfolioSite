@@ -34,6 +34,10 @@
                 <flux:navlist.item icon="rss" :href="route('blogs')" :current="request()->routeIs('blogs')"
                     wire:navigate>{{ __('Blogs') }}</flux:navlist.item>
             </flux:navlist.group>
+            <flux:navlist.group :heading="__('Projects')" class="grid">
+                <flux:navlist.item icon="folder-kanban" :href="route('projects')" :current="request()->routeIs('projects')"
+                    wire:navigate>{{ __('Projects') }}</flux:navlist.item>
+            </flux:navlist.group>
 
             <flux:navlist.group :heading="__('Team')" class="grid">
                 <flux:navlist.item icon="users" :href="route('team.index')"

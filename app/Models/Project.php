@@ -117,7 +117,7 @@ class Project extends Model
      */
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'project_tags', 'project_id', 'tag_id');
+        return $this->hasMany(ProjectTag::class);
     }
     /**
      * Get the loom link for the project.
@@ -132,5 +132,13 @@ class Project extends Model
     public function getLinkAttribute($value)
     {
         return $value ??  null;
+    }
+    public function projectGalleries()
+    {
+        return $this->hasMany(ProjectGallery::class, 'project_id');
+    }
+    public function projectTeams()
+    {
+        return $this->hasMany(ProjectTeam::class, 'project_id');
     }
 }

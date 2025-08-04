@@ -6,7 +6,7 @@
     <x-skills :backends="$backends" :frontends="$frontends" :databases="$databases" :ais="$ais" />
 
     <!-- Projects Section -->
-    <x-feature-projects />
+    <x-feature-projects :projects="$projects" />
 
     <x-team :teams="$teams" />
 

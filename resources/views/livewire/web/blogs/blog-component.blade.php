@@ -125,7 +125,7 @@
                         </a>
                         <div class="flex flex-wrap gap-2">
                             @foreach ($blog->tags as $tag)
-                            <flux:badge color="green" variant="solid">{{ $tag->name }}</flux:badge>
+                            <flux:badge color="green" variant="solid">{{ $tag->tag->name }}</flux:badge>
                             @endforeach
                         </div>
                     </div>

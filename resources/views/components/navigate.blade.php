@@ -2,9 +2,12 @@
 <nav class="fixed top-0 w-full z-50 glass-effect" data-aos="fade-down">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center py-4">
-            <div class="text-2xl font-bold gradient-text-animated font-mono">{'
-                <MA />'}
+            <!-- Logo -->
+            <div class="text-2xl font-bold gradient-text-animated font-mono">
+                <x-app-logo />
             </div>
+
+            <!-- Desktop Navigation -->
             <div class="hidden md:flex space-x-6 items-center">
                 <a href="{{ route('home') }}" class="nav-link hover:text-neon-green transition-all duration-300 relative"
                     wire:navigate>Home</a>
@@ -18,31 +21,25 @@
                     wire:navigate>Blog</a>
                 <a href="#contact"
                     class="nav-link hover:text-neon-green transition-all duration-300 relative">Contact</a>
-
-                <!-- Theme Toggle -->
-                {{-- <div class="theme-toggle" id="themeToggle" title="Toggle theme">
-                    <span class="theme-icon">🌙</span>
-                    <div class="theme-toggle-slider">
-                        <span id="sliderIcon">🌙</span>
-                    </div>
-                    <span class="theme-icon">☀️</span>
-                </div> --}}
             </div>
-            {{-- <div class="md:hidden flex items-center space-x-4">
-                <!-- Mobile Theme Toggle -->
-                <div class="theme-toggle scale-75" id="mobileThemeToggle" title="Toggle theme">
-                    <span class="theme-icon">🌙</span>
-                    <div class="theme-toggle-slider">
-                        <span id="mobileSliderIcon">🌙</span>
-                    </div>
-                    <span class="theme-icon">☀️</span>
-                </div>
-                <flux:radio.group x-data x-model="$flux.appearance" class="theme-toggle scale-75">
-                    <flux:radio value="light">Light</flux:radio>
-                    <flux:radio value="dark">Dark</flux:radio>
-                    <flux:radio value="system">System</flux:radio>
-                </flux:radio.group>
-            </div> --}}
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-button"
+                    class="mobile-menu-button p-2 rounded-lg hover:bg-white/10 transition-colors duration-300">
+                    <svg id="menu-icon" class="w-6 h-6 text-white transition-transform duration-300" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                    <svg id="close-icon" class="w-6 h-6 text-white transition-transform duration-300 hidden"
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
         </div>
     </div>
 </nav>
+

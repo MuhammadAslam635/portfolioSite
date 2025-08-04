@@ -9,6 +9,7 @@ use App\Livewire\Web\TeamProjectsComponent;
 use App\Livewire\Web\Blogs\BlogComponent;
 use App\Livewire\Web\Blogs\BlogDetailComponent;
 use App\Livewire\Web\Projects\ProjectComponent;
+use App\Livewire\Web\ProjectDetailComponent;
 use App\Livewire\Admin\AdminCreateBlogComponent;
 use App\Livewire\Admin\AdmineditBlogComponent;
 use App\Livewire\Admin\AllBlogsComponent;
@@ -29,6 +30,10 @@ use App\Livewire\Admin\AllSkillsComponent;
 use App\Livewire\Admin\AdminEditProjectComponent;
 use App\Livewire\Admin\AdminCreateProjectComponent;
 use App\Livewire\Admin\AllProjectsComponent;
+use App\Livewire\Admin\AdminViewProjectDetailComponent;
+use App\Livewire\Admin\AdminEditProjectGalleryComponent;
+
+
 
 Route::get('/', function () {
     // dd(\App\Models\Blog::all());
@@ -38,8 +43,10 @@ Route::get('/', function () {
     $databases = \App\Models\Skill::where('sType', 2)->get();
     $ais = \App\Models\Skill::where('sType', 3)->get();
     $teams = \App\Models\Team::all();
+    // $featuredProjects = \App\Models\Project::where('is_featured', 1)->inRandomOrder()->first();
+    $projects = \App\Models\Project::latest()->take(6)->get();
 
-    return view('welcome', compact('blogs', 'backends', 'frontends', 'databases', 'ais', 'teams'));
+    return view('welcome', compact('blogs', 'backends', 'frontends', 'databases', 'ais', 'teams', 'projects'));
 })->name('home');
 Route::get('/about', AboutComponent::class)->name('about');
 Route::get('/team', TeamComponent::class)->name('team');
@@ -48,6 +55,7 @@ Route::get('/team/projects/{slug}', TeamProjectsComponent::class)->name('team.pr
 Route::get('/blogs', BlogComponent::class)->name('blogs');
 Route::get('/blog-detail/{slug}', BlogDetailComponent::class)->name('blogDetail');
 Route::get('/projects', ProjectComponent::class)->name('projects');
+Route::get('/project/{slug}', ProjectDetailComponent::class)->name('projectDetail');
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
@@ -87,9 +95,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/edit/{slug}', AdminEditSkillComponent::class)->name('skills.edit');
     });
     Route::prefix('projects')->group(function () {
-        Route::get('/', AllProjectsComponent::class)->name('projects.index');
+        Route::get('/all', AllProjectsComponent::class)->name('projects');
         Route::get('/create', AdminCreateProjectComponent::class)->name('projects.create');
         Route::get('/edit/{slug}', AdminEditProjectComponent::class)->name('projects.edit');
+        Route::get('/detail/{slug}', AdminViewProjectDetailComponent::class)->name('projects.detail');
+        Route::get('/edit/{id}/gallery', AdminEditProjectGalleryComponent::class)->name('projects.gallery.edit');
+
     });
 });
 

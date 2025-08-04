@@ -1,69 +1,84 @@
-<div class="min-h-screen p-4">
+<div class="min-h-screen p-4 bg-gray-50 dark:bg-gray-900">
     <div class="max-w-7xl mx-auto">
-        <div class="bg-green-50 dark:bg-black rounded-2xl p-6 mb-6">
+        <!-- Header Section -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6">
             <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
                 <div>
-                    <h1 class="text-3xl font-bold gradient-text-animated mb-2">All Blogs</h1>
-                    <p class="text-gray-400">Discover amazing content from our community</p>
+                    <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">All Blogs</h1>
+                    <p class="text-gray-600 dark:text-gray-400">Discover amazing content from our community</p>
                 </div>
                 <div class="flex flex-row items-center gap-3">
-                    <div class="bg-gray-900 px-4 py-2 rounded-lg border border-green-700">
-                        <span class="text-sm text-gray-300">Total: <span
-                                class="text-neon-green font-semibold">{{ $totalBlogs }}</span>
-                            blogs</span>
+                    <div class="bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-600">
+                        <span class="text-sm text-gray-700 dark:text-gray-300">
+                            Total: <span class="text-blue-600 dark:text-blue-400 font-semibold">{{ $totalBlogs }}</span> Blogs
+                        </span>
                     </div>
-                    <flux:button variant="primary" :href="route('blogs.create')" wire:navigate>Create New Blog
+                    <flux:button variant="primary" :href="route('blogs.create')" wire:navigate>
+                        Create New Blog
                     </flux:button>
                 </div>
             </div>
         </div>
 
-        <!-- Search and Filters Section -->
-        <div class="bg-green-50 dark:bg-black rounded-2xl p-6 mb-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
-                <div class="bg-green-50 dark:bg-black rounded-xl p-4 text-center">
-                    <div class="text-2xl font-bold text-neon-green mb-1">{{ $totalBlogs }}</div>
-                    <div class="text-sm text-gray-400">Total Blogs</div>
+        <!-- Statistics Cards -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-xl p-4 text-center border border-blue-200 dark:border-blue-800">
+                    <div class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-1">{{ $totalBlogs }}</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Total Blogs</div>
                 </div>
-                <div class="bg-green-50 dark:bg-black rounded-xl p-4 text-center">
-                    <div class="text-2xl font-bold text-neon-green mb-1">{{ $publishedBlogs }}</div>
-                    <div class="text-sm text-gray-400">Published</div>
+                <div class="bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-xl p-4 text-center border border-green-200 dark:border-green-800">
+                    <div class="text-2xl font-bold text-green-600 dark:text-green-400 mb-1">{{ $publishedBlogs }}</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Published</div>
                 </div>
-                <div class="bg-green-50 dark:bg-black rounded-xl p-4 text-center">
-                    <div class="text-2xl font-bold text-yellow-500 mb-1">{{ $draftedBlogs }}</div>
-                    <div class="text-sm text-gray-400">Drafts</div>
+                <div class="bg-gradient-to-r from-yellow-50 to-yellow-100 dark:from-yellow-900/20 dark:to-yellow-800/20 rounded-xl p-4 text-center border border-yellow-200 dark:border-yellow-800">
+                    <div class="text-2xl font-bold text-yellow-600 dark:text-yellow-400 mb-1">{{ $draftedBlogs }}</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Drafts</div>
                 </div>
-                <div class="bg-green-50 dark:bg-black rounded-xl p-4 text-center">
-                    <div class="text-2xl font-bold text-red-500 mb-1">{{ $pendingBlogs }}</div>
-                    <div class="text-sm text-gray-400">Archived</div>
+                <div class="bg-gradient-to-r from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-xl p-4 text-center border border-red-200 dark:border-red-800">
+                    <div class="text-2xl font-bold text-red-600 dark:text-red-400 mb-1">{{ $pendingBlogs }}</div>
+                    <div class="text-sm text-gray-600 dark:text-gray-400">Archived</div>
                 </div>
             </div>
         </div>
-        <div class="bg-green-50 dark:g=bg-green-50 dark:bg-black rounded-2xl p-6 mb-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-                <div class="md:col-span-2 lg:col-span-2 xl:col-span-2">
+
+        <!-- Filters Section -->
+        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+                <!-- Search Input -->
+                <div class="md:col-span-2 lg:col-span-2">
                     <div class="relative">
-                        <input type="text" placeholder="Search blogs..." wire:model.live="search"
-                            class="w-full bg-green-50 dark:bg-gray-900 border border-green-700 rounded-lg px-4 py-3 pl-10 text-gray-950 dark:text-white dark:placeholder-gray-100 placeholder-gray-900 focus:border-neon-green focus:ring-1 focus:ring-neon-green transition-all duration-300">
-                        <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400"
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        <input
+                            type="text"
+                            placeholder="Search blogs..."
+                            wire:model.live="search"
+                            class="w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 pl-10 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200"
+                        >
+                        <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                         </svg>
                     </div>
                 </div>
-                <div class="lg:col-span-1">
-                    <select wire:model.live="category"
-                        class="w-full bg-green-50 dark:bg-gray-900 border border-green-700 rounded-lg px-4 py-3 text-gray-950 dark:text-white focus:border-neon-green focus:ring-1 focus:ring-neon-green transition-all duration-300">
+
+                <!-- Category Filter -->
+                <div>
+                    <select
+                        wire:model.live="category"
+                        class="w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200"
+                    >
                         <option value="all">All Categories</option>
                         @foreach ($categories as $cat)
                             <option value="{{ $cat->id }}">{{ $cat->name }}</option>
                         @endforeach
                     </select>
                 </div>
-                <div class="lg:col-span-1">
-                    <select wire:model.live="status"
-                        class="w-full bg-green-50 dark:bg-gray-900 border border-green-700 rounded-lg px-4 py-3 text-gray-950 dark:text-white focus:border-neon-green focus:ring-1 focus:ring-neon-green transition-all duration-300">
+
+                <!-- Status Filter -->
+                <div>
+                    <select
+                        wire:model.live="status"
+                        class="w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200"
+                    >
                         <option value="all">All Status</option>
                         <option value="0">Pending</option>
                         <option value="1">Published</option>
@@ -71,18 +86,25 @@
                         <option value="3">Archived</option>
                     </select>
                 </div>
-                <div class="lg:col-span-1">
-                    <select wire:model.live="featured"
-                        class="w-full bg-green-50 dark:bg-gray-900 border border-green-700 rounded-lg px-4 py-3 text-gray-950 dark:text-white focus:border-neon-green focus:ring-1 focus:ring-neon-green transition-all duration-300">
+
+                <!-- Featured Filter -->
+                <div>
+                    <select
+                        wire:model.live="featured"
+                        class="w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200"
+                    >
                         <option value="all">All Posts</option>
                         <option value="1">Featured Only</option>
                         <option value="0">Regular Posts</option>
                     </select>
                 </div>
-                <div class="lg:col-span-1">
-                    <select wire:model.live="latest"
-                        class="w-full bg-green-50 dark:bg-gray-900 border border-green-700 rounded-lg px-4 py-3 text-gray-950 dark:text-white focus:border-neon-green focus:ring-1 focus:ring-neon-green transition-all duration-300">
 
+                <!-- Sort Filter -->
+                <div>
+                    <select
+                        wire:model.live="latest"
+                        class="w-full bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all duration-200"
+                    >
                         <option value="latest">Latest</option>
                         <option value="oldest">Oldest</option>
                         <option value="popular">Most Popular</option>
@@ -92,47 +114,86 @@
                 </div>
             </div>
         </div>
+
         <!-- Blog Cards Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
             @foreach ($blogs as $blog)
-                <div
-                    class="blog-card group relative rounded-2xl overflow-hidden bg-green-50 dark:bg-gray-900 border border-green-700 hover:border-neon-green transition-all duration-500 hover:shadow-2xl hover:shadow-neon-green/20">
+                <div class="group relative rounded-2xl overflow-hidden bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-500 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10">
 
-                    <div class="absolute top-4 left-4 z-10">
-                        <div class="flex flex-row gap-1">
-                            <flux:badge color="amber" class="text-xs font-semibold animate-pulse">
-                                {{ $blog->is_featured ? '⭐ Featured' : ' Non Featured' }}
-                            </flux:badge>
-                            <flux:badge color="pink" class="cursor-pointer text-xs font-semibold animate-pulse"
-                                wire:click="addContentBlog({{ $blog->id }})">New Content</flux:badge>
-                            <flux:badge color="lime" class="cursor-pointer text-xs font-semibold animate-pulse">New
-                                Tag
-                            </flux:badge>
+                    <!-- Top Action Badges -->
+                    <div class="absolute top-4 left-4 right-4 z-10">
+                        <div class="flex flex-wrap items-start justify-between gap-2">
+                            <!-- Featured Badge -->
+                            <div class="flex flex-wrap gap-1">
+                                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium {{ $blog->is_featured ? 'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-400' : 'bg-gray-100 text-gray-600 dark:bg-gray-700 dark:text-gray-400' }}">
+                                    {{ $blog->is_featured ? '⭐ Featured' : 'Non Featured' }}
+                                </span>
+
+                                <!-- Action Buttons -->
+                                <button
+                                    wire:click="addContentBlog({{ $blog->id }})"
+                                    class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-pink-100 hover:bg-pink-200 text-pink-800 dark:bg-pink-900/30 dark:text-pink-400 transition-colors duration-200"
+                                    title="New Content"
+                                >
+                                    New Content
+                                </button>
+
+                                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-lime-100 text-lime-800 dark:bg-lime-900/30 dark:text-lime-400">
+                                    New Tag
+                                </span>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Blog Image -->
-                    <div class="relative h-48 overflow-hidden">
-                        <img src="{{ asset('assets/' . $blog->image) }}" alt="Blog Image"
-                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">
-                        </div>
+                    <div class="relative h-48 overflow-hidden bg-gray-100 dark:bg-gray-700">
+                        @if($blog->image)
+                            <img
+                                src="{{ asset('assets/' . $blog->image) }}"
+                                alt="{{ $blog->name }}"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                loading="lazy"
+                            >
+                        @else
+                            <div class="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500">
+                                <svg class="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15"></path>
+                                </svg>
+                            </div>
+                        @endif
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
-                        <!-- Reading Time -->
-                        <div class="absolute bottom-4 left-4">
-                            <div class="flex flex-row gap-1">
-                                <flux:badge color="rose"
-                                    class="backdrop-blur-sm px-2 py-1 rounded-full text-xs text-white">
+                        <!-- Bottom Action Buttons -->
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <!-- Reading Time -->
+                                <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-rose-500/80 backdrop-blur-sm text-white">
                                     {{ $blog->reading_time }} min read
-                                </flux:badge>
-                                <flux:button variant="primary" color="indigo" size="sm" icon="pencil-off"
-                                    class="backdrop-blur-sm cursor-pointer" :href="route('blogs.edit',['slug'=>$blog->slug])" wire:navigate>
+                                </span>
+
+                                <!-- Edit Button -->
+                                <a
+                                    href="{{ route('blogs.edit', ['slug' => $blog->slug]) }}"
+                                    wire:navigate
+                                    class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-indigo-500/80 hover:bg-indigo-600/80 backdrop-blur-sm text-white transition-colors duration-200"
+                                >
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                    </svg>
                                     Edit
-                                </flux:button>
-                                <flux:button :href="route('blogs.detail',['slug'=>$blog->slug])" variant="primary" color="fuchsia" size="sm" icon="eye"
-                                    class="backdrop-blur-sm cursor-pointer">
+                                </a>
+
+                                <!-- Detail Button -->
+                                <a
+                                    href="{{ route('blogs.detail', ['slug' => $blog->slug]) }}"
+                                    class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium bg-fuchsia-500/80 hover:bg-fuchsia-600/80 backdrop-blur-sm text-white transition-colors duration-200"
+                                wire:navigate>
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                    </svg>
                                     Detail
-                                </flux:button>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -141,175 +202,186 @@
                     <div class="p-6">
                         <!-- Category & Date -->
                         <div class="flex items-center justify-between mb-3">
-                            <span
-                                class="blog-tag px-2 py-1 rounded-full text-xs font-medium">{{ $blog->category->name }}</span>
-                            <span
-                                class="text-xs text-gray-400">{{ \Carbon\Carbon::parse($blog->created_at)->isoFormat('MMM Do YYYY') }}</span>
+                            <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400">
+                                {{ $blog->category->name }}
+                            </span>
+                            <span class="text-xs text-gray-500 dark:text-gray-400">
+                                {{ \Carbon\Carbon::parse($blog->created_at)->isoFormat('MMM Do YYYY') }}
+                            </span>
                         </div>
 
                         <!-- Title -->
-                        <h3
-                            class="text-lg font-bold text-gray-950 dark:text-white mb-3 line-clamp-2 group-hover:text-neon-green transition-colors duration-300">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                             {{ $blog->name }}
                         </h3>
 
                         <!-- Author -->
                         <div class="flex items-center gap-3 mb-4">
-                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face"
-                                alt="Author" class="w-8 h-8 rounded-full">
-                            <span class="text-sm text-gray-500">{{ $blog->author->name }}</span>
+                            <img
+                                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face"
+                                alt="{{ $blog->author->name }}"
+                                class="w-8 h-8 rounded-full border border-gray-200 dark:border-gray-600"
+                                loading="lazy"
+                            >
+                            <span class="text-sm text-gray-600 dark:text-gray-400">{{ $blog->author->name }}</span>
                         </div>
 
                         <!-- Stats -->
-                        <div class="flex items-center justify-between text-xs text-gray-400">
+                        <div class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400">
                             <div class="flex items-center gap-4">
                                 <span class="flex items-center gap-1">
                                     <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
-                                        </path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
                                     </svg>
-                                    {{ $blog->views > 1000 ? $blog->views / 1000 . 'k' : $blog->views }}
+                                    {{ $blog->views > 1000 ? number_format($blog->views / 1000, 1) . 'k' : $blog->views }}
                                 </span>
                                 <span class="flex items-center gap-1">
                                     <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-                                        </path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
                                     </svg>
-                                    {{ $blog->likes > 1000 ? $blog->likes . 'k' : $blog->likes }}
+                                    {{ $blog->likes > 1000 ? number_format($blog->likes / 1000, 1) . 'k' : $blog->likes }}
                                 </span>
                                 <span class="flex items-center gap-1">
                                     <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z">
-                                        </path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
                                     </svg>
-                                    {{ $blog->comments_count > 1000 ? $blog->comments_count . 'k' : $blog->comments_count }}
+                                    {{ $blog->comments_count > 1000 ? number_format($blog->comments_count / 1000, 1) . 'k' : $blog->comments_count }}
                                 </span>
                             </div>
                             <div class="flex items-center gap-1">
-                                <div class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                                <div class="w-2 h-2 {{ $blog->is_published == 1 ? 'bg-green-500' : 'bg-yellow-500' }} rounded-full"></div>
                                 <span>{{ $blog->is_published == 1 ? 'Published' : 'Drafted' }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
             @endforeach
-
         </div>
 
-
+        <!-- Empty State -->
+        @if($blogs->isEmpty())
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-12 text-center">
+                <svg class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15"></path>
+                </svg>
+                <h3 class="text-lg font-medium text-gray-900 dark:text-white mb-2">No blogs found</h3>
+                <p class="text-gray-500 dark:text-gray-400 mb-6">Get started by creating your first blog post.</p>
+                <flux:button variant="primary" :href="route('blogs.create')" wire:navigate>
+                    Create New Blog
+                </flux:button>
+            </div>
+        @endif
 
         <!-- Pagination -->
-        <div class="g=bg-green-50 dark:bg-black rounded-2xl p-6">
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
-
-                <!-- Page Info -->
-                <div class="text-sm text-gray-400">
-                    Showing <span class="font-semibold text-neon-green">1</span> to <span
-                        class="font-semibold text-neon-green">{{ $blogs->count() }}</span> of <span
-                        class="font-semibold text-neon-green">{{ $totalBlogs }}</span> results
-                </div>
-
-                <!-- Pagination Controls -->
-                <div class="flex items-center gap-2">
-
-                    {{ $blogs->links() }}
-                </div>
-
-
-            </div>
-        </div>
-        <div>
-
-
-            <flux:modal class="md:w-full" wire:model.self="showConfirmModal">
-                <form wire:submit.prevent="addBlogContent" enctype="multipart/form-data">
-                    <div class="space-y-6">
-                        <section
-                            class="border border-gray-200 dark:border-gray-700 p-4 rounded bg-zinc-50 dark:bg-gray-900 space-y-4">
-
-                            @error('content')
-                                <span class="text-red-500 text-sm">{{ $message }}</span>
-                            @enderror
-
-                            {{-- Trix Editor with proper Livewire integration --}}
-                            <div wire:ignore>
-                                <label
-                                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Content</label>
-                                <input id="content" type="hidden" wire:model.live="content">
-                                <trix-editor input="content"
-                                    class="w-full trix-content min-h-[16rem] border rounded shadow-sm"
-                                    placeholder="Enter your contact page content here..." x-data="{
-                                        content: @entangle('content').live
-                                    }"
-                                    x-init="$el.addEventListener('trix-change', function(e) {
-                                        content = e.target.value;
-                                    });
-                                    $el.editor.loadHTML(content);"></trix-editor>
-                            </div>
-                        </section>
-
-                        <flux:input label="Caption" wire:model="caption" placeholder="Caption" />
-
-                        <flux:input label="Image" wire:model="Blogimage" type="file" />
-
-                        <div class="flex">
-                            <flux:spacer />
-
-                            <flux:button type="submit" variant="primary">Save Content</flux:button>
-                        </div>
+        @if($blogs->hasPages())
+            <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <!-- Page Info -->
+                    <div class="text-sm text-gray-600 dark:text-gray-400">
+                        Showing
+                        <span class="font-medium text-gray-900 dark:text-white">{{ $blogs->firstItem() ?? 0 }}</span>
+                        to
+                        <span class="font-medium text-gray-900 dark:text-white">{{ $blogs->lastItem() ?? 0 }}</span>
+                        of
+                        <span class="font-medium text-gray-900 dark:text-white">{{ $totalBlogs }}</span>
+                        results
                     </div>
-                </form>
-            </flux:modal>
-        </div>
+
+                    <!-- Pagination Controls -->
+                    <div class="flex items-center gap-2">
+                        {{ $blogs->links() }}
+                    </div>
+                </div>
+            </div>
+        @endif
+
+        <!-- Content Modal -->
+        <flux:modal class="md:w-full" wire:model.self="showConfirmModal">
+            <form wire:submit.prevent="addBlogContent" enctype="multipart/form-data">
+                <div class="space-y-6">
+                    <!-- Content Editor Section -->
+                    <section class="border border-gray-200 dark:border-gray-700 p-4 rounded-lg bg-gray-50 dark:bg-gray-900 space-y-4">
+                        @error('content')
+                            <span class="text-red-500 text-sm">{{ $message }}</span>
+                        @enderror
+
+                        <!-- Trix Editor -->
+                        <div wire:ignore>
+                            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Content</label>
+                            <input id="content" type="hidden" wire:model.live="content">
+                            <trix-editor
+                                input="content"
+                                class="w-full trix-content min-h-[16rem] border rounded-lg shadow-sm"
+                                placeholder="Enter your blog content here..."
+                                x-data="{ content: @entangle('content').live }"
+                                x-init="$el.addEventListener('trix-change', function(e) { content = e.target.value; }); $el.editor.loadHTML(content);"
+                            ></trix-editor>
+                        </div>
+                    </section>
+
+                    <!-- Caption Input -->
+                    <flux:input label="Caption" wire:model="caption" placeholder="Enter image caption" />
+
+                    <!-- Image Upload -->
+                    <flux:input label="Image" wire:model="Blogimage" type="file" accept="image/*" />
+
+                    <!-- Modal Actions -->
+                    <div class="flex justify-end gap-3">
+                        <flux:button type="button" variant="ghost" wire:click="$set('showConfirmModal', false)">
+                            Cancel
+                        </flux:button>
+                        <flux:button type="submit" variant="primary">
+                            Save Content
+                        </flux:button>
+                    </div>
+                </div>
+            </form>
+        </flux:modal>
     </div>
 </div>
+
 @push('css')
-    <style>
-        .dark trix-editor {
-            background-color: #1f2937 !important;
-            /* gray-800 */
-            color: #f9fafb !important;
-            /* zinc-100 */
-            border-color: #374151 !important;
-            /* gray-700 */
-        }
+<style>
+    .dark trix-editor {
+        background-color: #1f2937 !important;
+        color: #f9fafb !important;
+        border-color: #374151 !important;
+    }
 
-        .dark trix-editor:focus {
-            outline: none !important;
-            box-shadow: 0 0 0 2px #4ade80 !important;
-            /* green-400 focus ring */
-        }
+    .dark trix-editor:focus {
+        outline: none !important;
+        box-shadow: 0 0 0 2px #3b82f6 !important;
+    }
 
-        .dark trix-toolbar {
-            background-color: #1f2937 !important;
-            /* gray-800 */
-            border-color: #374151 !important;
-        }
+    .dark trix-toolbar {
+        background-color: #1f2937 !important;
+        border-color: #374151 !important;
+    }
 
-        .dark trix-toolbar .trix-button {
-            color: #d1d5db !important;
-            /* gray-300 */
-            background: transparent !important;
-        }
+    .dark trix-toolbar .trix-button {
+        color: #d1d5db !important;
+        background: transparent !important;
+    }
 
-        .dark trix-toolbar .trix-button:hover {
-            background-color: #374151 !important;
-            /* gray-700 */
-        }
+    .dark trix-toolbar .trix-button:hover {
+        background-color: #374151 !important;
+    }
 
-        .dark trix-toolbar .trix-button--icon {
-            filter: invert(1) brightness(1.2);
-            /* invert toolbar icons */
-        }
+    .dark trix-toolbar .trix-button--icon {
+        filter: invert(1) brightness(1.2);
+    }
 
-        .dark trix-editor::placeholder {
-            color: #9ca3af !important;
-            /* gray-400 */
-        }
-    </style>
+    .dark trix-editor::placeholder {
+        color: #9ca3af !important;
+    }
+
+    /* Line clamp utility */
+    .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+</style>
 @endpush

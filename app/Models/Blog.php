@@ -33,8 +33,7 @@ class Blog extends Model
      */
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'blog_tags', 'blog_id', 'tag_id')
-                    ->withTimestamps();
+        return $this->hasMany(BlogTag::class);
     }
     /**
      * Get the author of the blog.

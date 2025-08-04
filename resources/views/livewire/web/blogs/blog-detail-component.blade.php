@@ -30,7 +30,7 @@
                 <div class="flex items-center justify-center mt-6 ">
                     @foreach($blog->tags as $tag)
                         <span class="px-4 py-2 bg-neon-green bg-opacity-20 text-black text-sm rounded-full mr-2">
-                            {{ $tag->name }}
+                            {{ $tag->tag->name }}
                         </span>
                     @endforeach
 
